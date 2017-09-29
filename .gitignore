@@ -1,0 +1,38 @@
+.DS_Store
+Thumbs.db
+
+application/cache/*
+!application/cache/index.html
+!application/cache/.htaccess
+
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+
+user_guide/*
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+/vendor/
+
+# IDE Files
+#-------------------------
+/nbproject/
+.idea/*
+
+## Sublime Text cache files
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# Back up Files
+#-------------------------
+benchmark.txt
+bootstrap-3.3.6-dist.zip
+codeigniter-simplicity-master.zip
+customd-jquery-number-2.1.3-0-g69ce868.zip
+data-sql.sql
+nathai*
