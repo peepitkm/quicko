@@ -50,10 +50,10 @@ exports.addOrder = functions.https.onRequest((req, res) => {
 
   data[table] = item_table;
   data[customer] = item_customer;
-  data['menus'] = [
-    'M1':1,
-    'M2':2
-  ];
+  data['menus'] = {
+    'M1':'1',
+    'M2':'2'
+  };
 
   console.log(data);
 

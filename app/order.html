@@ -74,7 +74,7 @@ body {
 </nav>
 <div class="container-fluid">
 	<!-- Strat Context -->
-	<form id="table-form" action="#" method="post">
+	<form id="table-form" action="http://localhost:5001/thevagabond-ef4b2/us-central1/addOrder" method="get">
 	<div id="ordering-panel" class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="row">
@@ -200,7 +200,8 @@ body {
 		e_item.val(items === -1 ? "" : items + 1 );
 	});
 
-	$("#btn-ordering").submit(function(){
+	
+	$("#table-form").submit(function(){
 		var url = 'http://localhost:5001/thevagabond-ef4b2/us-central1/addOrder';
 		var menus = [
 			{title: 'Xxx1', price: '500'},
@@ -209,14 +210,13 @@ body {
 		];
 		var data = {
 			table: $('#table-no').val(),
-			customer: $('#customer').val(),
-			menus : menus
+			customer: $('#customer').val()
 		};
 		console.log(data);
 		$.get(url, data, function(data){
 			console.log(data);
 		});
-		
+
 		return false; 
 	});
 </script>
