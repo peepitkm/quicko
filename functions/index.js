@@ -1,9 +1,12 @@
 const functions = require('firebase-functions');
-
 const admin = require('firebase-admin');
+// our functions
+const order = require('./order');
+
+// init
 admin.initializeApp(functions.config().firebase);
 
-
+// add menus
 exports.addMenus = functions.https.onRequest((req, res) => {
 
   const item_name = req.query.name;
@@ -27,4 +30,24 @@ exports.addMenus = functions.https.onRequest((req, res) => {
   admin.database().ref('/menus').push(new_menu).then(snapshot => {
     console.log('A new menu item was added');
   });
+});
+
+// exports.addMenus = order.addOrder();
+
+exports.addOrder = functions.https.onRequest((req, res) => {
+
+  // const table = req.query.table;
+  // const customer = req.query.customer;
+
+  let data = {
+    table : req.query.table,
+    customer : req.query.customer
+  };
+
+  console.log(req.query.table);
+
+  admin.database().ref('/orders').push(data).then(snapshot => {
+    console.log('A new menu item was added');
+  });
+
 });

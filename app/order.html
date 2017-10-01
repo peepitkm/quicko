@@ -74,30 +74,30 @@ body {
 </nav>
 <div class="container-fluid">
 	<!-- Strat Context -->
-	<form id="table-form" action="#" method="post">
+	<form id="table-form" action="http://localhost:5001/thevagabond-ef4b2/us-central1/addOrder" method="post">
 	<div id="ordering-panel" class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-6 col-md-4">
 					<div class="form-group">
 						<label for="table">Table No.</label>
-						<select name="table_no" id="table-no" class="form-control input-lg">
+						<select name="table" id="table-no" class="form-control input-lg">
 							<option value="">Select Table...</option>
 								<option value="1"> 1 </option>
 								<option value="1"> 2 </option>
 								<option value="1"> 3 </option>
 						</select>
-						<input type="hidden" id="billing-no" name="billing_no" value="<?php echo $table->billing_no; ?>">
+						<input type="hidden" id="billing-no" name="billing_no" value="">
 					</div>
 				</div>
 				<div class="col-xs-6 col-md-offset-5 col-md-3">
 					<div class="form-group">
-						<label for="table">Number of Customer:</label>
+						<label for="customer">Number of Customer:</label>
 						<div class="input-group">
 							<span class="input-group-btn">
 								<button class="bs2 btn btn-default input-lg minus" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
 							</span>
-							<input type="text" pattern="[\d\.]*" name="total_customer" id="total-customer" class="form-control input-lg text-center quantity unsigned" inputmode="numeric" readonly="readonly">
+							<input type="text" pattern="[\d\.]*" name="customer" id="total-customer" class="form-control input-lg text-center quantity unsigned" inputmode="numeric" readonly="readonly">
 							<span class="input-group-btn">
 								<button class="bs2 btn btn-default input-lg plus" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
 							</span>
@@ -117,7 +117,6 @@ body {
 			</div>
 		</div>
 	</div>
-
 	<div id="ordering" class="tab-content">
 		<!-- category -->
 		<div role="tabpanel" class="tab-pane active" id="category-xxx">
@@ -137,16 +136,14 @@ body {
 							<button class="bs2 btn btn-default plus" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
 						</span>
 					</div>
-					<input type="hidden" name="ids[]" value="<?php echo $menu->id; ?>">
-					<input type="hidden" name="kitchens[]" value="<?php echo $menu->name_kitchen; ?>">
-					<input type="hidden" name="prices[]" value="<?php echo $menu->price; ?>">
+					<input type="hidden" name="ids[]" value="">
+					<input type="hidden" name="prices[]" value="">
 				</div>
 				<!-- /menu -->
 			</div>
 		</div>
 		<!-- /category -->
 	</div>
-
 	<nav id="navbar-bottom" class="navbar navbar-default navbar-fixed-bottom">
 		<div class="container-fluid">
 			<div class="row">
@@ -159,6 +156,7 @@ body {
 			</div>
 		</div><!-- /.container-fluid -->
 	</nav>
+	</form>
 	<!-- End Context -->
 </div>
 
