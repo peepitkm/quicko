@@ -1,14 +1,16 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-// our functions
-const order = require('./order');
-
 // init
 admin.initializeApp(functions.config().firebase);
 
+// our functions
+const order = require('./order');
+const chefModule = require('./chef')
+
+exports.getOrder = chefModule.getOrder;
+
 // add menus
 exports.addMenus = functions.https.onRequest((req, res) => {
-
   const item_name = req.query.name;
   const item_no = req.query.no;
   const item_type = req.query.type;
