@@ -20,16 +20,136 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default navbar-nathai navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="<?php echo site_url(); ?>">QuickO</a>
+		</div>
+		<div id="navbar-collapse" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="">Home</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-fw fa-search"></i> Search</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="th"></i> Language <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><span class="flag-icon flag-icon-us"></span> English </a></li>
+						<li><a href="#"><span class="flag-icon flag-icon-th"></span> Thai </a></li>
+						<li><a href="#"><span class="flag-icon flag-icon-jp"></span> Japanese </a></li>
+					</ul>
+				</li>
+			</ul>
+		</div> <!-- /.navbar-collapse -->
+	</div> <!-- /.container -->
+</nav>
+<div class="container-fluid">
+	<!-- Strat Context -->
+	<form id="table-form" action="#" method="post">
+	<div id="ordering-panel" class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6 col-md-4">
+					<div class="form-group">
+						<label for="table">Table No.</label>
+						<select name="table_no" id="table-no" class="form-control input-lg">
+							<option value="">Select Table...</option>
+								<option value="1"> 1 </option>
+								<option value="1"> 2 </option>
+								<option value="1"> 3 </option>
+						</select>
+						<input type="hidden" id="billing-no" name="billing_no" value="<?php echo $table->billing_no; ?>">
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-offset-5 col-md-3">
+					<div class="form-group">
+						<label for="table">Number of Customer:</label>
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="bs2 btn btn-default input-lg minus" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+							</span>
+							<input type="text" pattern="[\d\.]*" name="total_customer" id="total-customer" class="form-control input-lg text-center quantity unsigned" inputmode="numeric" readonly="readonly">
+							<span class="input-group-btn">
+								<button class="bs2 btn btn-default input-lg plus" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<ul id="ordering-menu-categories" class="nav nav-pills" role="tablist">
+						<li role="presentation" class="active">
+							<a href="#category-xxx" role="tab" data-toggle="tab"> Category Name
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 
+	<div id="ordering" class="tab-content">
+		<!-- category -->
+		<div role="tabpanel" class="tab-pane active" id="category-xxx">
+			<div class="row menu-wrapper">
+				<!-- menu -->
+				<div class="col-xs-6 col-sm-3 col-lg-2">
+					<div class="menu">
+						<a class="menu-picture" href="#"><img src="#"></a>
+						<div class="menu-number">No.</small></div>
+						<div class="menu-title text-ellipsis"></div>
+						<div class="menu-price"></div>
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="bs2 btn btn-default minus" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+							</span>
+							<input type="number" name="quantities[]" class="form-control text-center quantity" readonly="readonly" data-id="<?php echo $menu->id; ?>">
+							<span class="input-group-btn">
+								<button class="bs2 btn btn-default plus" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+							</span>
+						</div>
+						<input type="hidden" name="ids[]" value="<?php echo $menu->id; ?>">
+						<input type="hidden" name="kitchens[]" value="<?php echo $menu->name_kitchen; ?>">
+						<input type="hidden" name="prices[]" value="<?php echo $menu->price; ?>">
+					</div>
+				</div>
+				<!-- /menu -->
+			</div>
+		</div>
+		<!-- /category -->
+	</div>
 
-<div class="loader">
-<svg viewBox="0 0 32 32" width="32" height="32">
-<circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-</svg>
+	<nav id="navbar-bottom" class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-6 col-md-10">
+					<div class="checkbox">
+						<label>
+							<input id="with-payment" type="checkbox" name="with_payment" value="Y"> Payment
+						</label>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2">
+					<button type="submit" id="btn-ordering" class="bs2 btn btn-success btn-lg btn-block"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> <span class="span-text">Order...</span></button>
+				</div>
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+	<!-- End Context -->
 </div>
 
 <!-- Uncomment the line below when ready to test with fake data -->
-<script src="/js/bootstrap.js" async></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="/js/bootstrap.js"></script>
 <script src="/js/app.js" async></script>
 
 </body>
