@@ -4,8 +4,11 @@ const admin = require('firebase-admin');
 // admin.initializeApp(functions.config().firebase);
 
 exports.getOrder = functions.https.onRequest((request, response) => {
-  return admin.database().ref('/messages/KvIlzkm9XlQDNaa12k8').once('value', (snapshot) => {
+  // const params = request.url.split("/");
+  // const eventId = params[1];
+  return admin.database().ref('/orders/-KvM9atGT8lWt28k5avB').once('value', (snapshot) => {
       var event = snapshot.val();
-      response.send('test:' + event.original);
+      var key = Object.keys(event.menus);
+      response.send('test:' + key);
    });
 });

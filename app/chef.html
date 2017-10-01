@@ -74,14 +74,66 @@ body {
 </nav>
 <div class="container-fluid">
 	<!-- Strat Context -->
-
+  <div id="ordering" class="tab-content">
+		<!-- category -->
+		<div role="tabpanel" class="tab-pane active" id="category-xxx">
+			<div class="row menu-wrapper">
+				<!-- menu -->
+				<div class="menu col-xs-4 col-sm-3 col-lg-2">
+					<img src="#" width="100%">
+					<div class="menu-number"></div>
+					<div class="menu-title text-ellipsis"></div>
+					<div class="menu-price"></div>
+					<!-- <div class="input-group">
+						<span class="input-group-btn">
+							<button class="bs2 btn btn-default minus" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
+						</span>
+						<input type="number" name="quantities[]" class="form-control text-center quantity" readonly="readonly" data-id="<?php echo $menu->id; ?>">
+						<span class="input-group-btn">
+							<button class="bs2 btn btn-default plus" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+						</span>
+					</div> -->
+					<input type="hidden" name="ids[]" value="">
+					<input type="hidden" name="prices[]" value="">
+				</div>
+				<!-- /menu -->
+			</div>
+		</div>
+		<!-- /category -->
+	</div>
 	<!-- End Context -->
 </div>
 
 <!-- Uncomment the line below when ready to test with fake data -->
+<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 <script src="/js/app.js" async></script>
+<script type="text/javascript">
+  // Initialize Firebase
+  $.get("http://localhost:5001/thevagabond-ef4b2/us-central1/getOrder", function( data ) {
+    console.log(data)
+  });
+	var menus = [{
+		'title':'Caffee Mocha',
+		'price':1000,
+		'image':'https://firebasestorage.googleapis.com/v0/b/thevagabond-ef4b2.appspot.com/o/menus%2Fcaffee-mocha_tcm78-10981_w1024_n.jpg?alt=media&token=9bd675ac-51df-4599-af85-fb66a7f33559'
+	},{
+		'title':'Caramel Macchiato',
+		'price':2000,
+		'image':'https://firebasestorage.googleapis.com/v0/b/thevagabond-ef4b2.appspot.com/o/menus%2Fcaramel-macchiato-thumb_tcm78-11384_w1024_n.jpg?alt=media&token=660c23b9-47cd-435e-8844-881d45c9b8ed'
+	}];
 
+	var temp = $('.menu:first').clone();
+  $('#ordering .menu-wrapper').empty();
+	$.each(menus, function(index, value) {
+		var menu = temp.html();
+		$('#ordering .menu-wrapper').append('<div class="menu col-xs-4 col-sm-3 col-lg-2">'+menu+'</div>');
+		$('#ordering .menu-wrapper').find('div.menu-title:last').text(value.title);
+		$('#ordering .menu-wrapper').find('div.menu-price:last').text(value.price);
+		$('#ordering .menu-wrapper').find('img:last').prop('src', value.image);
+		console.log(value);
+	});
+</script>
 </body>
 </html>
