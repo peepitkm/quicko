@@ -70,12 +70,8 @@ body {
 	margin-bottom: 15px; 
 }
 #ordering .menu {
-	border: 1px solid #e7e7e7;
-	height: 112px;
 	padding: 10px;
 	margin: 15px 0;
-	background-color: #f8f8f8;
-	border-radius: 5px;
 }
 #ordering .menu .menu-number {
 	color: #656D78;
