@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+
 // init
 admin.initializeApp(functions.config().firebase);
 
@@ -59,5 +60,4 @@ exports.addOrder = functions.https.onRequest((req, res) => {
   admin.database().ref('/orders').push(data).then(snapshot => {
     console.log('A new menu item was added');
   });
-
 });
