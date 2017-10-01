@@ -12,26 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-var dataCacheName = 'weatherData-v1';
-var cacheName = 'weatherPWA-final-1';
+var dataCacheName = 'quicko-v1';
+var cacheName = 'quicko-cache';
 var filesToCache = [
-  '/quicko/',
-  '/quicko/index.html',
-  '/quicko/js/app.js',
-  '/quicko/css/inline.css',
-  '/quicko/images/clear.png',
-  '/quicko/images/cloudy-scattered-showers.png',
-  '/quicko/images/cloudy.png',
-  '/quicko/images/fog.png',
-  '/quicko/images/ic_add_white_24px.svg',
-  '/quicko/images/ic_refresh_white_24px.svg',
-  '/quicko/images/partly-cloudy.png',
-  '/quicko/images/rain.png',
-  '/quicko/images/scattered-showers.png',
-  '/quicko/images/sleet.png',
-  '/quicko/images/snow.png',
-  '/quicko/images/thunderstorm.png',
-  '/quicko/images/wind.png'
+  '/',
+  '/index.html',
+  '/js/app.js',
+  '/css/bootstrap.css',
+  '/images/clear.png',
+  '/images/cloudy-scattered-showers.png',
+  '/images/cloudy.png',
+  '/images/fog.png',
+  '/images/ic_add_white_24px.svg',
+  '/images/ic_refresh_white_24px.svg',
+  '/images/partly-cloudy.png',
+  '/images/rain.png',
+  '/images/scattered-showers.png',
+  '/images/sleet.png',
+  '/images/snow.png',
+  '/images/thunderstorm.png',
+  '/images/wind.png'
 ];
 
 self.addEventListener('install', function(e) {

@@ -1,0 +1,36 @@
+[debug] [2017-10-01T04:38:13.303Z] ----------------------------------------------------------------------
+[debug] [2017-10-01T04:38:13.306Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\peepitkm\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve --only hosting
+[debug] [2017-10-01T04:38:13.306Z] CLI Version:   3.12.0
+[debug] [2017-10-01T04:38:13.306Z] Platform:      win32
+[debug] [2017-10-01T04:38:13.306Z] Node Version:  v6.11.3
+[debug] [2017-10-01T04:38:13.307Z] Time:          Sun Oct 01 2017 11:38:13 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-10-01T04:38:13.307Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2017-10-01T04:38:13.319Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2017-10-01T04:38:13.320Z] > authorizing via signed-in user
+[debug] [2017-10-01T04:38:13.322Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2017-10-01T04:38:13.322Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token { refresh_token: '1/ptf_5vreDK7IjB_JUuB10haHE4xDMVqYM9_rHEiZF0Q',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Oct 01 2017 11:38:13 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-10-01T04:38:13.536Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-01T04:38:13.552Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/thevagabond-ef4b2  
+ Sun Oct 01 2017 11:38:13 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-10-01T04:38:14.743Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-01T04:38:14.744Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/thevagabond-ef4b2/tokens  
+ Sun Oct 01 2017 11:38:14 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-10-01T04:38:15.693Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'E:\xampp\htdocs\quicko'...
+[info] 
+[debug] [2017-10-01T04:38:15.696Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/thevagabond-ef4b2  
+ Sun Oct 01 2017 11:38:15 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-10-01T04:38:17.006Z] <<< HTTP RESPONSE 200
+[debug] [2017-10-01T04:38:17.008Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/842697540013/clients/_:getWebAppConfig  
+ Sun Oct 01 2017 11:38:17 GMT+0700 (SE Asia Standard Time)
+[debug] [2017-10-01T04:38:17.731Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: app
+[info] +  hosting: Local server: http://localhost:5000
+
