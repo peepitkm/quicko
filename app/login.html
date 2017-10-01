@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="canonical" href="https://quicko.firebaseapp.com/">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickO</title>
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700" rel="stylesheet" type="text/css">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+<!-- TODO add manifest here -->
+<link rel="manifest" href="/manifest.json">
+<!-- Add to home screen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Weather PWA">
+<link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+<meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+<meta name="msapplication-TileColor" content="#2F3BA2">
+</head>
+<style type="text/css">
+</style>
+<body>
+
+<nav class="navbar navbar-default navbar-nathai navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="<?php echo site_url(); ?>">QuickO</a>
+		</div>
+		<div id="navbar-collapse" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="">Home</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-fw fa-search"></i> Search</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="th"></i> Language <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><span class="flag-icon flag-icon-us"></span> English </a></li>
+						<li><a href="#"><span class="flag-icon flag-icon-th"></span> Thai </a></li>
+                        <li><a href="#"><span class="flag-icon flag-icon-jp"></span> Japanese </a></li>
+                        <li><a href="javascript:logout()"><span class="flag-icon flag-icon-jp"></span> Sign-out </a></li>
+					</ul>
+				</li>
+			</ul>
+		</div> <!-- /.navbar-collapse -->
+	</div> <!-- /.container -->
+</nav>
+<div id="" class="container-fluid">
+
+	<!-- /#form-model-add -->
+
+<!-- End Context -->
+</div>
+
+<!-- Uncomment the line below when ready to test with fake data -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/app.js" async></script>
+<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAMLCKR78V949BBkOZLYWhy_vzIMOMRuEU",
+    authDomain: "thevagabond-ef4b2.firebaseapp.com",
+    databaseURL: "https://thevagabond-ef4b2.firebaseio.com",
+    projectId: "thevagabond-ef4b2",
+    storageBucket: "thevagabond-ef4b2.appspot.com",
+    messagingSenderId: "842697540013"
+  };
+  firebase.initializeApp(config);
+
+function login() {    
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    if(user != null){
+        alert("Welcome: "+user.email)
+        window.location = "http://localhost:5000/menu.html";
+    }else{
+        alert("No Authentication")
+    }
+    }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        var email = error.email;
+        var credential = error.credential;
+  });
+}
+
+function logout(){
+    firebase.auth().signOut().then(function() {
+        alert("Signout Success")
+    }).catch(function(error) {
+    });
+}
+</script>
+<script>
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        //window.location = "http://localhost:5000/menu.html";
+    } 
+});
+</script>
+<div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-md-offset-4">
+                <h1 class="text-center login-title">Sign in to QuickO. Using Google</h1>
+                <div class="account-wall">
+                    <img class="center-block profile-img" height="150" src="https://freeiconshop.com/wp-content/uploads/edd/food-flat.png"
+                        alt="">
+                        <button class="btn btn-lg btn-primary btn-block" onclick="login()">
+                                Sign in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
