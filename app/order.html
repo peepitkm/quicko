@@ -137,6 +137,7 @@ body {
 						</span>
 					</div>
 					<input type="hidden" name="ids[]" value="">
+					<input type="hidden" name="titles[]" value="">
 					<input type="hidden" name="prices[]" value="">
 				</div>
 				<!-- /menu -->
@@ -166,10 +167,12 @@ body {
 <script src="/js/app.js" async></script>
 <script type="text/javascript">
 	var menus = [{
+		'id':'M1',
 		'title':'Caffee Mocha',
 		'price':1000,
 		'image':'https://firebasestorage.googleapis.com/v0/b/thevagabond-ef4b2.appspot.com/o/menus%2Fcaffee-mocha_tcm78-10981_w1024_n.jpg?alt=media&token=9bd675ac-51df-4599-af85-fb66a7f33559'
 	},{
+		'id':'M2',
 		'title':'Caramel Macchiato',
 		'price':2000,
 		'image':'https://firebasestorage.googleapis.com/v0/b/thevagabond-ef4b2.appspot.com/o/menus%2Fcaramel-macchiato-thumb_tcm78-11384_w1024_n.jpg?alt=media&token=660c23b9-47cd-435e-8844-881d45c9b8ed'
@@ -203,14 +206,25 @@ body {
 	
 	$("#table-form").submit(function(){
 		var url = 'http://localhost:5001/thevagabond-ef4b2/us-central1/addOrder';
-		var menus = [
-			{title: 'Xxx1', price: '500'},
-			{title: 'Xxx2', price: '1500'},
-			{title: 'Xxx3', price: '2000'}
-		];
+		var menus = [];
+		$('#ordering .menu-wrapper .menu').each(function(){
+			var id = $(this).find('.menu-number').text();
+			var title = $(this).find('.menu-title"]').text();
+			var price = $(this).find('.menu-price').text();
+			var quantity = $(this).find('input[name="quantities[]"]').val();
+			//
+			menus.push({
+				id:id,
+				title:title,
+				price:price,
+				quantity:quantity
+			});
+		});
+		
 		var data = {
 			table: $('#table-no').val(),
-			customer: $('#customer').val()
+			customer: $('#customer').val(),
+			menus:menus
 		};
 		console.log(data);
 		$.get(url, data, function(data){
