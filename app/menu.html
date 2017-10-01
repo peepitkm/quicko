@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="canonical" href="https://quicko.firebaseapp.com/">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QuickO</title>
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,700italic,400,700" rel="stylesheet" type="text/css">
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/css/custom.css">
+
+<!-- TODO add manifest here -->
+<link rel="manifest" href="/manifest.json">
+<!-- Add to home screen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Weather PWA">
+<link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+<meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+<meta name="msapplication-TileColor" content="#2F3BA2">
+</head>
+<style type="text/css">
+</style>
+<body>
+
+<nav class="navbar navbar-default navbar-nathai navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="<?php echo site_url(); ?>">QuickO</a>
+		</div>
+		<div id="navbar-collapse" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="">Home</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#" data-toggle="modal" data-target="#searchModal"><i class="fa fa-fw fa-search"></i> Search</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="th"></i> Language <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><span class="flag-icon flag-icon-us"></span> English </a></li>
+						<li><a href="#"><span class="flag-icon flag-icon-th"></span> Thai </a></li>
+						<li><a href="#"><span class="flag-icon flag-icon-jp"></span> Japanese </a></li>
+					</ul>
+				</li>
+			</ul>
+		</div> <!-- /.navbar-collapse -->
+	</div> <!-- /.container -->
+</nav>
+<div id="" class="container-fluid">
+<!-- Strat Context -->
+	<h1> Menus Panel	<button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#modal-menu-add" data-backdrop="static" data-keyboard="false"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Menu</button></h1>
+
+	<div role="tabpanel" class="tab-pane active" id="category-1">
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th width="3%">#</th>
+						<th width="8%">Menu No.</th>
+						<th>Name</th>
+						<th width="8%">Price</th>
+						<th width="8%">Type</th>
+						<th width="8%">Showed</th>
+						<th width="8%">Ordered</th>
+						<th width="8%">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1.</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<!-- #form-model-add -->
+	<form id="form-model-add" action="<?php echo site_url('admin/menus/add'); ?>" method="post">
+		<div class="modal fade" id="modal-menu-add" tabindex="-1" role="dialog" aria-labelledby="modal-label-add">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="modal-label-add">Add New Menu</h4>
+		      </div>
+		      <div class="modal-body">
+					<div class="row">
+						<div class="col-md-4 text-center">
+							<img src="/images/clear.png" width="100%">
+							Change
+						</div>
+						<div class="col-md-8">
+							<div class="row">
+								<div class="col-sm-9">
+									<div class="form-group">
+										<label for="tableName">Name</label>
+										<input type="text" name="name_en" id="menu-add-nameen" class="form-control">
+									</div>
+								</div>
+								<div class="col-sm-3">
+									<div class="form-group">
+										<label for="tableName">Menu No.</label>
+										<input type="text" name="menu_no" id="menu-add-menuno" class="form-control numberic-no" maxlength="10">
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="tableName">Type</label>
+								<div>
+									<label class="radio-inline">
+										<input type="radio" name="type" value="hot"> Hot
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="type" value="ice"> Ice
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="type" value="smoothy"> Smoothy
+									</label>
+									<label class="radio-inline">
+										<input type="radio" name="type" value="other"> Other
+									</label>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="tableName">Category</label>
+								<select name="category_id" class="form-control" id="menu-add-category">
+									<option value="xxx">XXX</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="tableName">Price</label>
+								<input type="text" name="price" id="menu-add-price" class="form-control numberic-price">
+								<!--<p class="help-block">In length of 0 to 999,999.99</p>-->
+							</div>
+						</div>
+					</div>	
+		      </div>
+		      <div class="modal-footer">
+		        <button id="cancel-button" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		        <button type="submit" class="btn btn-primary">Add</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	</form>
+	<!-- /#form-model-add -->
+
+<!-- End Context -->
+</div>
+
+<!-- Uncomment the line below when ready to test with fake data -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/app.js" async></script>
+
+</body>
+</html>
