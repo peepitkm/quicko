@@ -74,7 +74,7 @@ body {
 </nav>
 <div class="container-fluid">
 	<!-- Strat Context -->
-	<form id="table-form" action="http://localhost:5001/thevagabond-ef4b2/us-central1/addOrder" method="post">
+	<form id="table-form" action="#" method="post">
 	<div id="ordering-panel" class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="row">
@@ -97,7 +97,7 @@ body {
 							<span class="input-group-btn">
 								<button class="bs2 btn btn-default input-lg minus" type="button"><i class="fa fa-minus" aria-hidden="true"></i></button>
 							</span>
-							<input type="text" pattern="[\d\.]*" name="customer" id="total-customer" class="form-control input-lg text-center quantity unsigned" inputmode="numeric" readonly="readonly">
+							<input type="text" pattern="[\d\.]*" name="customer" id="customer" class="form-control input-lg text-center quantity unsigned" inputmode="numeric" readonly="readonly">
 							<span class="input-group-btn">
 								<button class="bs2 btn btn-default input-lg plus" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
 							</span>
@@ -176,6 +176,7 @@ body {
 	}];
 
 	var temp = $('.menu:first').clone();
+	$('#ordering .menu-wrapper').empty();
 	$.each(menus, function(index, value) {
 		var menu = temp.html();
 		$('#ordering .menu-wrapper').append('<div class="menu col-xs-4 col-sm-3 col-lg-2">'+menu+'</div>');
@@ -199,6 +200,25 @@ body {
 		e_item.val(items === -1 ? "" : items + 1 );
 	});
 
+	$("#btn-ordering").submit(function(){
+		var url = 'http://localhost:5001/thevagabond-ef4b2/us-central1/addOrder';
+		var menus = [
+			{title: 'Xxx1', price: '500'},
+			{title: 'Xxx2', price: '1500'},
+			{title: 'Xxx3', price: '2000'}
+		];
+		var data = {
+			table: $('#table-no').val(),
+			customer: $('#customer').val(),
+			menus : menus
+		};
+		console.log(data);
+		$.get(url, data, function(data){
+			console.log(data);
+		});
+		
+		return false; 
+	});
 </script>
 </body>
 </html>

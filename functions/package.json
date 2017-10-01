@@ -4,7 +4,6 @@
   "dependencies": {
     "firebase-admin": "~5.2.1",
     "firebase-functions": "^0.6.2",
-    "cors": "~2.8.4"
   },
   "private": true
 }

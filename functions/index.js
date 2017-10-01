@@ -39,15 +39,23 @@ exports.addMenus = functions.https.onRequest((req, res) => {
 
 exports.addOrder = functions.https.onRequest((req, res) => {
 
-  // const table = req.query.table;
-  // const customer = req.query.customer;
+  const item_table = req.query.table;
+  const item_customer = req.query.customer;
 
-  let data = {
-    table : req.query.table,
-    customer : req.query.customer
-  };
+  console.log(item_table, item_customer);
 
-  console.log(req.query.table);
+  let data = {};
+  let table = 'table';
+  let customer = 'customer';
+
+  data[table] = item_table;
+  data[customer] = item_customer;
+  data['menus'] = [
+    'M1':1,
+    'M2':2
+  ];
+
+  console.log(data);
 
   admin.database().ref('/orders').push(data).then(snapshot => {
     console.log('A new menu item was added');
