@@ -4,30 +4,28 @@ const chefModule = require('./chef')
 
 admin.initializeApp(functions.config().firebase);
 
-// Take the text parameter passed to this HTTP endpoint and insert it into the
-// Realtime Database under the path /messages/:pushId/original
-exports.addMessage = functions.https.onRequest((req, res) => {
-  // Grab the text parameter.
-  const original = req.query.text;
-  // Push the new message into the Realtime Database using the Firebase Admin SDK.
-  admin.database().ref('/messages').push({original: original}).then(snapshot => {
-    // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
-    res.redirect(303, snapshot.ref);
+exports.getOrder = chefModule.getOrder;
+
+exports.addMenus = functions.https.onRequest((req, res) => {
+  const item_name = req.query.name;
+  const item_no = req.query.no;
+  const item_type = req.query.type;
+  const item_category_id = req.query.category_id;
+  const item_price = req.query.price;
+
+  let new_menu = {};
+  let name = 'name';
+  let no = 'no';
+  let type = 'type';
+  let category = 'category';
+  let price = 'price';
+  new_menu[name] = item_name;
+  new_menu[no] = item_no;
+  new_menu[type] = item_type;
+  new_menu[category] = item_category_id;
+  new_menu[price] = item_price;
+
+  admin.database().ref('/menus').push(new_menu).then(snapshot => {
+    console.log('A new menu item was added');
   });
 });
-
-// Listens for new messages added to /messages/:pushId/original and creates an
-// uppercase version of the message to /messages/:pushId/uppercase
-exports.makeUppercase = functions.database.ref('/messages/{pushId}/original')
-    .onWrite(event => {
-      // Grab the current value of what was written to the Realtime Database.
-      const original = event.data.val();
-      console.log('Uppercasing', event.params.pushId, original);
-      const uppercase = original.toUpperCase();
-      // You must return a Promise when performing asynchronous tasks inside a Functions such as
-      // writing to the Firebase Realtime Database.
-      // Setting an "uppercase" sibling in the Realtime Database returns a Promise.
-      return event.data.ref.parent.child('uppercase').set(uppercase);
-    });
-
-exports.getOrder = chefModule.getOrder;

@@ -93,7 +93,7 @@
 	</div>
 
 	<!-- #form-model-add -->
-	<form id="form-model-add" action="<?php echo site_url('admin/menus/add'); ?>" method="post">
+	<form id="form-model-add" action="http://localhost:5001/thevagabond-ef4b2/us-central1/addMenus" method="get">
 		<div class="modal fade" id="modal-menu-add" tabindex="-1" role="dialog" aria-labelledby="modal-label-add">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
@@ -105,20 +105,20 @@
 					<div class="row">
 						<div class="col-md-4 text-center">
 							<img src="/images/clear.png" width="100%">
-							Change
+							<label class="btn btn-default">Browse <input type="file" name="picture" hidden></label>
 						</div>
 						<div class="col-md-8">
 							<div class="row">
 								<div class="col-sm-9">
 									<div class="form-group">
 										<label for="tableName">Name</label>
-										<input type="text" name="name_en" id="menu-add-nameen" class="form-control">
+										<input type="text" name="name" id="menu-add-name" class="form-control">
 									</div>
 								</div>
 								<div class="col-sm-3">
 									<div class="form-group">
 										<label for="tableName">Menu No.</label>
-										<input type="text" name="menu_no" id="menu-add-menuno" class="form-control numberic-no" maxlength="10">
+										<input type="text" name="no" id="menu-add-menuno" class="form-control numberic-no" maxlength="10">
 									</div>
 								</div>
 							</div>
@@ -151,7 +151,7 @@
 								<!--<p class="help-block">In length of 0 to 999,999.99</p>-->
 							</div>
 						</div>
-					</div>	
+					</div>
 		      </div>
 		      <div class="modal-footer">
 		        <button id="cancel-button" type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
