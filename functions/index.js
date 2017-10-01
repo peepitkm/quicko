@@ -41,19 +41,15 @@ exports.addOrder = functions.https.onRequest((req, res) => {
 
   const item_table = req.query.table;
   const item_customer = req.query.customer;
+  const item_menus = req.query.menus;
 
   console.log(item_table, item_customer);
 
   let data = {};
-  let table = 'table';
-  let customer = 'customer';
 
-  data[table] = item_table;
-  data[customer] = item_customer;
-  data['menus'] = {
-    'M1':'1',
-    'M2':'2'
-  };
+  data['table'] = item_table;
+  data['customer'] = item_customer;
+  data['menus'] = item_menus;
 
   console.log(data);
 

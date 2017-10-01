@@ -170,7 +170,7 @@ body {
 		'id':'M1',
 		'title':'Caffee Mocha',
 		'price':1000,
-		'image':'https://firebasestorage.googleapis.com/v0/b/thevagabond-ef4b2.appspot.com/o/menus%2Fcaffee-mocha_tcm78-10981_w1024_n.jpg?alt=media&token=9bd675ac-51df-4599-af85-fb66a7f33559'
+		'image':'https://firebasestorage.googleapis.com/v0/b/thevagabond-ef4b2.appspot.com/o/menus%2Fcaffee-mocha_tcm78-10981_w1024_n.jpg?alt=media&token=1c58738c-f20e-4654-aa12-bdb17c886672'
 	},{
 		'id':'M2',
 		'title':'Caramel Macchiato',
@@ -183,6 +183,7 @@ body {
 	$.each(menus, function(index, value) {
 		var menu = temp.html();
 		$('#ordering .menu-wrapper').append('<div class="menu col-xs-4 col-sm-3 col-lg-2">'+menu+'</div>');
+		$('#ordering .menu-wrapper').find('div.menu-number:last').text(value.id);
 		$('#ordering .menu-wrapper').find('div.menu-title:last').text(value.title);
 		$('#ordering .menu-wrapper').find('div.menu-price:last').text(value.price);
 		$('#ordering .menu-wrapper').find('img:last').prop('src', value.image);
@@ -209,7 +210,7 @@ body {
 		var menus = [];
 		$('#ordering .menu-wrapper .menu').each(function(){
 			var id = $(this).find('.menu-number').text();
-			var title = $(this).find('.menu-title"]').text();
+			var title = $(this).find('.menu-title').text();
 			var price = $(this).find('.menu-price').text();
 			var quantity = $(this).find('input[name="quantities[]"]').val();
 			//
